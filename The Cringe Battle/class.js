@@ -228,7 +228,7 @@ class GrassEaters {
         matrix[this.y][this.x]=0
     }
 }
-
+/// sas
 class Mushroom{
     constructor (x, y, index){
         this.x = x;
