@@ -1,4 +1,4 @@
-<html>
+<!--<html>
    <head>
    </head>
    <body>
@@ -19,8 +19,98 @@
        </style>
        <div class="cringe">
            <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
-           <script src="class.js"></script>
+           <script src="modules/class.albone.js"></script>
+           <script src="modules/class.albonebase.js"></script>
+           <script src="modules/class.alligator.js"></script>
+           <script src="modules/class.alligatorbase.js"></script>
+           <script src="modules/class.alligatortale.js"></script>
+           <script src="modules/class.bullet.js"></script>
+           <script src="modules/class.caviar.js"></script>
+           <script src="modules/class.crater.js"></script>
+           <script src="modules/class.creator.js"></script>
+           <script src="modules/class.fishs.js"></script>
+           <script src="modules/class.fishsnest.js"></script>
+           <script src="modules/class.grass.js"></script>
+           <script src="modules/class.grasseaters.js"></script>
+           <script src="modules/class.LIVING_CREATURE.js"></script>
+           <script src="modules/class.mushroom.js"></script>
+           <script src="modules/class.nest.js"></script>
+           <script src="modules/class.pistol.js"></script>
+           <script src="modules/class.predator.js"></script>
+           <script src="modules/class.pistol.js"></script>
+           <script src="modules/class.secalbone.js"></script>
+           <script src="modules/class.secalbonebase.js"></script>
+           <script src="modules/class.secalligator.js"></script>
+           <script src="modules/class.secalligatorbase.js"></script>
+           <script src="modules/class.secalligatortale.js"></script>
            <script src="script.js"></script>
        </div>
    </body>
+</html>-->
+<html>
+
+<head>
+    <meta charset="utf8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+
+        div {
+            display: inline-block;
+        }
+
+        h1 {
+            padding: 20px;
+            text-align: center;
+        }
+
+        body {
+            font-family: 'Noto Sans', sans-serif !important;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <h1>Ծրագրավորում III Երևան</h1>
+            </tr>
+            <tr>
+                <h1>Բազիկյան Գևորգ</h1>
+            </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Գույն</th>
+                <th scope="col">Նկարագրություն</th>
+                <th scope="col">Ծնվել է</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td scope="row" style="background-color:green;"></td>
+                <td>Կանաչը խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
+                    կրակը, կամ նրան կոխկրտում է գիշատիչը</td>
+                <td id="grassCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td scope="row" style="background-color:orange;"></td>
+                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
+                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
+                <td id="grassEatersCount"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button onclick="kill()">Kill them all</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+    <script src="script.js"></script>
+</body>
+
 </html>

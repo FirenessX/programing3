@@ -1,16 +1,16 @@
 {
- "name": "Prog3Fireness",
+ "name": "programing3",
  "repository": {
-   "type": "git",
-   "url": "git+   https://github.com/FirenessX/programing3/"
+  "type": "git",
+  "url": "git+   https://github.com/FirenessX/programing3/"
  },
  "author": "FirenessX",
  "license": "ISC",
  "dependencies": {
-   "express": "^4.16.2"
+  "express": "^4.17.3",
+  "socket.io": "^4.4.1"
  },
  "engines": {
-   "node": "4.7.2"
+  "node": "4.7.2"
  }
-
 }
