@@ -1,5 +1,18 @@
-// 
+//! SERVER STUFF  --  START
+var express = require('express');
+var app = express();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+var fs = require('fs');
+app.use(express.static("."));
+app.get('/', function (req, res) {
+    res.redirect('index.html');
+});
+server.listen(5000);
+//! SERVER STUFF END  --  END
+
 weath = "winter";
+
 //! Requiring modules  --  START
 var Grass = require("./modules/class.grass.js");
 var GrassEaters = require("./modules/class.grasseaters.js");
@@ -29,23 +42,43 @@ var SecAlligatorTale = require("./modules/class.secalligatortale.js");
 
 
 //! Setting global arrays  --  START
-grassArr = [];
-grassEatersArr = [];
+let grassArr= [];
+let grassEatersArr= [];
+let mushroomArr = [];
+let creatorArr = [];
+let nestArr = [];
+let fishsnestArr = [];
+let fishsArr = [];
+let caviarArr = [];
+let predatorArr = [];
+let alligatorArr = [];
+let alBoneArr = [];
+let alBoneBaseArr = [];
+let alligatorBaseArr = [];
+let alligatorTaleArr = [];
+let secAlligatorArr = [];
+let secAlBoneArr = [];
+let secAlBoneBaseArr = [];
+let secAlligatorBaseArr = [];
+let secAlligatorTaleArr = [];
+let bulletArr = [];
+let pistolArr = [];
+let craterArr = [];
 //! Setting global arrays  -- END
 
 
 
 
 //! Creating MATRIX -- START
-let matrix = [
-    [6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
+var matrix = [
+    [6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
     [6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
     [6, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
     [6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 25, 25],
     [6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 24, 24],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 24, 24, 24, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 24, 24, 24, 24, 24],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 24, 24, 24, 24, 24],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 24, 24, 24, 24, 24],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 24, 24, 24, 24, 24],
@@ -97,20 +130,10 @@ function weather() {
     }
     io.sockets.emit('weather', weath)
 }
+
 setInterval(weather, 5000);
 
-//! SERVER STUFF  --  START
-var express = require('express');
-var app = express();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-var fs = require('fs');
-app.use(express.static("."));
-app.get('/', function (req, res) {
-    res.redirect('index.html');
-});
-server.listen(8080);
-//! SERVER STUFF END  --  END
+
 
 function keyPressed() {
     for (let i in pistolArr) {
@@ -209,7 +232,8 @@ function game() {
     //! Object to send
     let sendData = {
         matrix: matrix,
-        grassCounter: grassArr.length
+        grassCounter: grassArr.length,
+        grassEatersCounter: grassEatersArr.length
     }
 
     //! Send data over the socket to clients who listens "data"
@@ -222,28 +246,6 @@ setInterval(game, 1000)
 
 //// Add event
 function kill() {
-    let grassArr= [];
-    let grassEatersArr= [];
-    let mushroomArr = [];
-    let creatorArr = [];
-    let nestArr = [];
-    let fishsnestArr = [];
-    let fishsArr = [];
-    let caviarArr = [];
-    let predatorArr = [];
-    let alligatorArr = [];
-    let alBoneArr = [];
-    let alBoneBaseArr = [];
-    let alligatorBaseArr = [];
-    let alligatorTaleArr = [];
-    let secAlligatorArr = [];
-    let secAlBoneArr = [];
-    let secAlBoneBaseArr = [];
-    let secAlligatorBaseArr = [];
-    let secAlligatorTaleArr = [];
-    let bulletArr = [];
-    let pistolArr = [];
-    let craterArr = [];
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             matrix[y][x] = 0;

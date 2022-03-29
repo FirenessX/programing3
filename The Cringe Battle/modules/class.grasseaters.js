@@ -32,9 +32,9 @@ module.exports = class GrassEaters extends LivingCreature {
         var emptyCells = this.chooseCell(0);
         var grassCells = this.chooseCell(1);
         var mushCells = this.chooseCell(3);
-        var newCell = random(emptyCells);
-        var newCellG = random(grassCells);
-        var newCellM = random(mushCells);
+        var newCell = Math.floor(Math.rand(emptyCells));
+        var newCellG = Math.floor(Math.rand(grassCells));
+        var newCellM = Math.floor(Math.rand(mushCells));
 
         if (newCell && this.multiply >= 120) {
             var newX = newCell[0];
@@ -66,10 +66,10 @@ module.exports = class GrassEaters extends LivingCreature {
         this.multiply++;
     }
     eat() {
-        const newCells = random(this.chooseCell(1));
-        const newCellsMush = random(this.chooseCell(3));
-        const bdeath = random(this.chooseCell(27));
-        const cdeath = random(this.chooseCell(29));
+        const newCells = Math.floor(Math.rand(this.chooseCell(1)));
+        const newCellsMush = Math.floor(Math.rand(this.chooseCell(3)));
+        const bdeath = Math.floor(Math.rand(this.chooseCell(27)));
+        const cdeath = Math.floor(Math.rand(this.chooseCell(29)));
             if (newCells) {
                 var newX = newCells[0];
                 var newY = newCells[1];
@@ -125,9 +125,9 @@ module.exports = class GrassEaters extends LivingCreature {
     }
 
     move() {
-        const emptCells = random(this.chooseCell(0));
-        const emptCellsG = random(this.chooseCell(1));
-        const emptCellsM = random(this.chooseCell(3));
+        const emptCells = Math.floor(Math.rand(this.chooseCell(0)));
+        const emptCellsG = Math.floor(Math.rand(this.chooseCell(1)));
+        const emptCellsM = Math.floor(Math.rand(this.chooseCell(3)));
         if (emptCells) {
             let newX = emptCells[0];
             let newY = emptCells[1];
