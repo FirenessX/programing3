@@ -1,5 +1,5 @@
 // 
-weather = "winter"
+weath = "winter";
 //! Requiring modules  --  START
 var Grass = require("./modules/class.grass.js");
 var GrassEaters = require("./modules/class.grasseaters.js");
@@ -31,86 +31,55 @@ var SecAlligatorTale = require("./modules/class.secalligatortale.js");
 //! Setting global arrays  --  START
 grassArr = [];
 grassEatersArr = [];
-matrix = [];
 //! Setting global arrays  -- END
 
 
 
 
 //! Creating MATRIX -- START
-function matrixGenerator() {
-    for (let y = 0; y < matrix.length; y++) {
-        for (let x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 1) {
-                grassArr.push(new Grass(x, y))
-            }
-            if (matrix[y][x] == 3) {
-                mushroomArr.push(new Mushroom(x, y))
-            }
-            if (matrix[y][x] == 4) {
-                creatorArr.push(new Creator(x, y))
-            }
-            if (matrix[y][x] == 2){
-              grassEatersArr.push(new GrassEaters(x, y))
-            }
-            if (matrix[y][x] == 5) {
-              nestArr.push(new Nest(x, y))
-         }
-         if (matrix[y][x] == 8) {
-             fishsnestArr.push(new FishsNest(x, y))
-        }
-         if (matrix[y][x] == 10) {
-             fishsArr.push(new Fishs(x, y))
-         }
-         if (matrix[y][x] == 11) {
-             caviarArr.push(new Caviar(x, y))
-         }
-         if (matrix[y][x] == 12) {
-             predatorArr.push(new Predator(x, y))
-         }
-         if (matrix[y][x] == 13) {
-             alligatorArr.push(new Alligator(x, y))
-         }
-         if (matrix[y][x] == 14) {
-             alligatorBaseArr.push(new AlligatorBase(x, y))
-         }
-         if (matrix[y][x] == 15) {
-             alBoneArr.push(new AlBone(x, y))
-         }
-         if (matrix[y][x] == 17) {
-             alBoneBaseArr.push(new AlBoneBase(x, y))
-         }
-         if (matrix[y][x] == 16) {
-             alligatorTaleArr.push(new AlligatorTale(x, y))
-         }
-         if (matrix[y][x] == 18) {
-             secAlligatorArr.push(new SecAlligator(x, y))
-         }
-         if (matrix[y][x] == 19) {
-             secAlligatorBaseArr.push(new SecAlligatorBase(x, y))
-         }
-         if (matrix[y][x] == 20) {
-              secAlBoneArr.push(new SecAlBone(x, y))
-         }
-         if (matrix[y][x] == 22) {
-             secAlBoneBaseArr.push(new SecAlBoneBase(x, y))
-         }
-         if (matrix[y][x] == 21) {
-             secAlligatorTaleArr.push(new SecAlligatorTale(x, y))
-         }
-         if (matrix[y][x] == 26) {
-             pistolArr.push(new Pistol(x, y))
-         }
-         if (matrix[y][x] == 27) {
-             bulletArr.push(new Bullet(x, y))
-         }
-         if (matrix[y][x] == 28) {
-             craterArr.push(new Crater(x, y))
-         }
-        }	   
-    }
-}
-matrixGenerator(20, 1, 1);
+let matrix = [
+    [6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
+    [6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
+    [6, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
+    [6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 25, 25],
+    [6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 24, 24, 24, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 24, 24, 24, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 24, 24, 24, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 24, 24, 24, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 25, 25, 25, 25, 25, 25, 25],
+    [9, 9, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 0, 0, 6, 7, 7, 7, 7, 7, 7, 7],
+    [9, 9, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 18, 19, 21, 7, 7, 7, 7, 6, 0, 0, 6, 7, 7, 7, 7, 7, 7, 7],
+    [9, 8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 0, 0, 6, 7, 7, 7, 7, 7, 7, 7],
+    [9, 8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 0, 0, 6, 7, 7, 7, 7, 7, 7, 7],
+    [9, 9, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 13, 14, 16, 7, 7, 7, 7, 6, 0, 0, 6, 7, 7, 7, 7, 7, 7, 7],
+    [9, 9, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 0, 0, 6, 7, 7, 7, 7, 7, 7, 7],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 25, 25, 25, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 24, 24, 24, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 24, 24, 24, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 24, 24, 24, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 24, 24, 24, 24, 24, 24, 24],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 24, 24],
+    [6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
+    [6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 25, 25, 25, 25],
+    [6, 6, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 24, 24, 25, 25, 25, 25],
+    [6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
+    [6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
+ ]
+const side = 23;
 //! Creating MATRIX -- END
 
 function weather() {
@@ -135,32 +104,96 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var fs = require('fs');
 app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
-server.listen(3000);
+server.listen(8080);
 //! SERVER STUFF END  --  END
 
-
+function keyPressed() {
+    for (let i in pistolArr) {
+        pistolArr[i].strike();
+    }
+}
 
 function creatingObjects() {
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x] == 2) {
-                var grassEaters = new GrassEaters(x, y);
-                grassEatersArr.push(grassEaters);
-            } else if (matrix[y][x] == 1) {
-                var grass = new Grass(x, y);
-                grassArr.push(grass);
+    for (let y = 0; y < matrix.length; y++) {
+        for (let x = 0; x < matrix[y].length; x++) {
+            if (matrix[y][x] == 1) {
+                grassArr.push(new Grass(x, y))
             }
-        }
+            if (matrix[y][x] == 3) {
+                mushroomArr.push(new Mushroom(x, y))
+            }
+            if (matrix[y][x] == 4) {
+                creatorArr.push(new Creator(x, y))
+            }
+            if (matrix[y][x] == 2){
+                grassEatersArr.push(new GrassEaters(x, y))
+            }
+            if (matrix[y][x] == 5) {
+                nestArr.push(new Nest(x, y))
+            }
+            if (matrix[y][x] == 8) {
+                fishsnestArr.push(new FishsNest(x, y))
+           }
+            if (matrix[y][x] == 10) {
+                fishsArr.push(new Fishs(x, y))
+            }
+            if (matrix[y][x] == 11) {
+                caviarArr.push(new Caviar(x, y))
+            }
+            if (matrix[y][x] == 12) {
+                predatorArr.push(new Predator(x, y))
+            }
+            if (matrix[y][x] == 13) {
+                alligatorArr.push(new Alligator(x, y))
+            }
+            if (matrix[y][x] == 14) {
+                alligatorBaseArr.push(new AlligatorBase(x, y))
+            }
+            if (matrix[y][x] == 15) {
+                alBoneArr.push(new AlBone(x, y))
+            }
+            if (matrix[y][x] == 17) {
+                alBoneBaseArr.push(new AlBoneBase(x, y))
+            }
+            if (matrix[y][x] == 16) {
+                alligatorTaleArr.push(new AlligatorTale(x, y))
+            }
+            if (matrix[y][x] == 18) {
+                secAlligatorArr.push(new SecAlligator(x, y))
+            }
+            if (matrix[y][x] == 19) {
+                secAlligatorBaseArr.push(new SecAlligatorBase(x, y))
+            }
+            if (matrix[y][x] == 20) {
+                secAlBoneArr.push(new SecAlBone(x, y))
+            }
+            if (matrix[y][x] == 22) {
+                secAlBoneBaseArr.push(new SecAlBoneBase(x, y))
+            }
+            if (matrix[y][x] == 21) {
+                secAlligatorTaleArr.push(new SecAlligatorTale(x, y))
+            }
+            if (matrix[y][x] == 26) {
+                pistolArr.push(new Pistol(x, y))
+            }
+            if (matrix[y][x] == 27) {
+                bulletArr.push(new Bullet(x, y))
+            }
+            if (matrix[y][x] == 28) {
+                craterArr.push(new Crater(x, y))
+            }
+        }      
     }
 }
 
 function game() {
     if (grassArr[0] !== undefined) {
-        if(weath != 'autumn') {
+        if(weath != 'autumn' && weath != 'winter') {
             for (var i in grassArr) {
                 grassArr[i].mul();
             }
@@ -189,11 +222,28 @@ setInterval(game, 1000)
 
 //// Add event
 function kill() {
-    grassArr = [];
-    grassEatersArr = []
-    meatEaterArr = []
-    allEaterArr = []
-    hunterArr = []
+    let grassArr= [];
+    let grassEatersArr= [];
+    let mushroomArr = [];
+    let creatorArr = [];
+    let nestArr = [];
+    let fishsnestArr = [];
+    let fishsArr = [];
+    let caviarArr = [];
+    let predatorArr = [];
+    let alligatorArr = [];
+    let alBoneArr = [];
+    let alBoneBaseArr = [];
+    let alligatorBaseArr = [];
+    let alligatorTaleArr = [];
+    let secAlligatorArr = [];
+    let secAlBoneArr = [];
+    let secAlBoneBaseArr = [];
+    let secAlligatorBaseArr = [];
+    let secAlligatorTaleArr = [];
+    let bulletArr = [];
+    let pistolArr = [];
+    let craterArr = [];
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             matrix[y][x] = 0;

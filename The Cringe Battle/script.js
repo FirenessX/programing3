@@ -99,6 +99,7 @@ for (let k = 0; k < grCount; k++) {
 }
 */
 
+const side = 23;
 let matrix = [
 	[6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
 	[6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
@@ -142,7 +143,6 @@ let matrix = [
 	[6, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 25, 25, 25, 25, 25, 25],
  ]
 
- const side = 23;
  let grassArr= [];
  let grassEatersArr= [];
  let mushroomArr = [];
@@ -178,7 +178,7 @@ function keyPressed() {
 	background('#acacac');
 	noStroke();
 
-	var weather = 'winter'
+	var weather = 'winter';
 	var socket = io();
 
 	//! Getting DOM objects (HTML elements)
@@ -192,77 +192,7 @@ function keyPressed() {
     {
         weath = data;
     })
- 
-   	for (let y = 0; y < matrix.length; y++) {
-	   	for (let x = 0; x < matrix[y].length; x++) {
-		   	if (matrix[y][x] == 1) {
-			   	grassArr.push(new Grass(x, y))
-		   	}
-		   	if (matrix[y][x] == 3) {
-	   			mushroomArr.push(new Mushroom(x, y))
-		   	}
-		   	if (matrix[y][x] == 4) {
-			   	creatorArr.push(new Creator(x, y))
-		   	}
-		   	if (matrix[y][x] == 2){
-			 	grassEatersArr.push(new GrassEaters(x, y))
-		   	}
-		   	if (matrix[y][x] == 5) {
-			 	nestArr.push(new Nest(x, y))
-			}
-			if (matrix[y][x] == 8) {
-				fishsnestArr.push(new FishsNest(x, y))
-		   }
-			if (matrix[y][x] == 10) {
-				fishsArr.push(new Fishs(x, y))
-			}
-			if (matrix[y][x] == 11) {
-				caviarArr.push(new Caviar(x, y))
-			}
-			if (matrix[y][x] == 12) {
-				predatorArr.push(new Predator(x, y))
-			}
-			if (matrix[y][x] == 13) {
-				alligatorArr.push(new Alligator(x, y))
-			}
-			if (matrix[y][x] == 14) {
-				alligatorBaseArr.push(new AlligatorBase(x, y))
-			}
-			if (matrix[y][x] == 15) {
-				alBoneArr.push(new AlBone(x, y))
-			}
-			if (matrix[y][x] == 17) {
-				alBoneBaseArr.push(new AlBoneBase(x, y))
-			}
-			if (matrix[y][x] == 16) {
-				alligatorTaleArr.push(new AlligatorTale(x, y))
-			}
-			if (matrix[y][x] == 18) {
-				secAlligatorArr.push(new SecAlligator(x, y))
-			}
-			if (matrix[y][x] == 19) {
-				secAlligatorBaseArr.push(new SecAlligatorBase(x, y))
-			}
-			if (matrix[y][x] == 20) {
-			 	secAlBoneArr.push(new SecAlBone(x, y))
-			}
-			if (matrix[y][x] == 22) {
-				secAlBoneBaseArr.push(new SecAlBoneBase(x, y))
-			}
-			if (matrix[y][x] == 21) {
-				secAlligatorTaleArr.push(new SecAlligatorTale(x, y))
-			}
-			if (matrix[y][x] == 26) {
-				pistolArr.push(new Pistol(x, y))
-			}
-			if (matrix[y][x] == 27) {
-				bulletArr.push(new Bullet(x, y))
-			}
-			if (matrix[y][x] == 28) {
-				craterArr.push(new Crater(x, y))
-			}
-	   	}	   
-	   }
+ 	
 	   function drawCreatures(data) {
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
@@ -274,9 +204,9 @@ function keyPressed() {
         //! Draw grassCount and grassEaterCount to HTML (use DOM objects to update information, yes, and use .innerText <- function)
 
         //! Drawing and coloring RECTs
-        for (var i = 0; i < matrix.length; i++) {
-            for (var j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] == 1) {
+        for (var y = 0; y < matrix.length; y++) {
+            for (var x = 0; x < matrix[y].length; x++) {
+                if (matrix[y][x] == 1) {
                         if(weath == "spring")
                         {
                             fill("green")
@@ -293,126 +223,97 @@ function keyPressed() {
                         {
                             fill("#4dffa6")
                         }
-                        rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 2) {
-                    fill("orange");
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 0) {
-                    fill('#acacac');
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 3) {
-                    fill('red');
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 4) {
-                    fill('blue');
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 5) {
-                    fill('yellow');
-                    rect(j * side, i * side, side, side);
-                }
+						else if (matrix[y][x] == 2){
+							fill("#ffad00");
+						}
+						else if (matrix[y][x] == 3){
+							fill("#c63535");
+						}
+						else if (matrix[y][x] == 4) {
+							fill("black");
+						}
+						else if (matrix[y][x] == 5) {
+							fill("#9a4b00");
+						}
+						else if (matrix[y][x] == 6) {
+							fill("#9a4b00");
+						}
+						else if (matrix[y][x] == 0) {
+							fill("#acacac");
+						}
+						else if (matrix[y][x] == 23) {
+							fill("#ccc");
+						}
+						else if (matrix[y][x] == 24) {
+							fill("#303030");
+						}
+						else if (matrix[y][x] == 25) {
+							fill("#acacac");
+						}
+						else if (matrix[y][x] == 7) {
+							fill("#4b90ff")
+						}
+						else if (matrix[y][x] == 8) {
+							fill("#88ebfd")
+						}
+						else if (matrix[y][x] == 9) {
+							fill("#88ebfd")
+						}
+						else if (matrix[y][x] == 10) {
+							fill("#ff884d")
+						}
+						else if (matrix[y][x] == 11) {
+							fill("#ff4928")
+						}
+						else if (matrix[y][x] == 12) {
+							fill("#480c00")
+						}
+						else if (matrix[y][x] == 13) { /// Al.
+							fill("#005e00")
+						}
+						else if (matrix[y][x] == 14) { /// Al.Base
+							fill("#003e00")
+						}
+						else if (matrix[y][x] == 15) { /// Al. Bone
+							fill("#4b90ff")
+						}
+						else if (matrix[y][x] == 16) { /// Al.Tale
+							fill("#001e00")
+						}
+						else if (matrix[y][x] == 17) { /// Al.Base Bone
+							fill("#4b90ff")
+						}
+						else if (matrix[y][x] == 18) { /// secAl.
+							fill("#5e0000")
+						}
+						else if (matrix[y][x] == 19) { /// secAl.Base
+							fill("#3e0000")
+						}
+						else if (matrix[y][x] == 20) { /// secAl. Bone
+							fill("#4b90ff")
+						}
+						else if (matrix[y][x] == 21) { /// secAl.Tale
+							fill("#1e0000")
+						}
+						else if (matrix[y][x] == 22) { /// secAl.Base Bone
+							fill("#1e0000")
+						}
+						else if (matrix[y][x] == 26) {
+							fill("#303030")
+						}
+						else if (matrix[y][x] == 27) {
+							fill("yellow")
+						}
+						else if (matrix[y][x] == 28) {
+							fill("red")
+						}
+						rect(x * side, y * side, side, side);
+				}
             }
         }
     }
 }
-
- function draw(){
-	 for (let y = 0; y < matrix.length; y++) {
-		 for (let x = 0; x < matrix[y].length; x++) {
-			if (matrix[y][x] == 1) {
-				fill("green");
-			}
-			else if (matrix[y][x] == 2){
-				fill("#ffad00");
-			}
-			else if (matrix[y][x] == 3){
-				fill("#c63535");
-			}
-			else if (matrix[y][x] == 4) {
-				fill("black");
-			}
-			else if (matrix[y][x] == 5) {
-				fill("#9a4b00");
-			}
-			else if (matrix[y][x] == 6) {
-				fill("#9a4b00");
-			}
-			else if (matrix[y][x] == 0) {
-				fill("#acacac");
-			}
-			else if (matrix[y][x] == 23) {
-				fill("#ccc");
-			}
-			else if (matrix[y][x] == 24) {
-				fill("#303030");
-			}
-			else if (matrix[y][x] == 25) {
-				fill("#acacac");
-			}
-			else if (matrix[y][x] == 7) {
-				fill("#4b90ff")
-			}
-			else if (matrix[y][x] == 8) {
-				fill("#88ebfd")
-			}
-			else if (matrix[y][x] == 9) {
-				fill("#88ebfd")
-			}
-			else if (matrix[y][x] == 10) {
-				fill("#ff884d")
-			}
-			else if (matrix[y][x] == 11) {
-				fill("#ff4928")
-			}
-			else if (matrix[y][x] == 12) {
-				fill("#480c00")
-			}
-			else if (matrix[y][x] == 13) { /// Al.
-				fill("#005e00")
-			}
-			else if (matrix[y][x] == 14) { /// Al.Base
-				fill("#003e00")
-			}
-			else if (matrix[y][x] == 15) { /// Al. Bone
-				fill("#4b90ff")
-			}
-			else if (matrix[y][x] == 16) { /// Al.Tale
-				fill("#001e00")
-			}
-			else if (matrix[y][x] == 17) { /// Al.Base Bone
-				fill("#4b90ff")
-			}
-			else if (matrix[y][x] == 18) { /// secAl.
-				fill("#5e0000")
-			}
-			else if (matrix[y][x] == 19) { /// secAl.Base
-				fill("#3e0000")
-			}
-			else if (matrix[y][x] == 20) { /// secAl. Bone
-				fill("#4b90ff")
-			}
-			else if (matrix[y][x] == 21) { /// secAl.Tale
-				fill("#1e0000")
-			}
-			else if (matrix[y][x] == 22) { /// secAl.Base Bone
-				fill("#1e0000")
-			}
-			else if (matrix[y][x] == 26) {
-				fill("#303030")
-			}
-			else if (matrix[y][x] == 27) {
-				fill("yellow")
-			}
-			else if (matrix[y][x] == 28) {
-				fill("red")
-			}
-			 rect(x * side, y * side, side, side);
-  
-		 }
-		
- 
-	 }
- 
-	 for(let i in grassArr){
+	/* for(let i in grassArr){
 		 grassArr[i].mul();
 	 }
 	 for(let i in mushroomArr){
@@ -479,10 +380,14 @@ function keyPressed() {
      }
 	 /*for (let i in pistolArr) {
 		 pistolArr[i].mul();
-	 }*/
+	 }
      for (var i = 0; i <= 8; i++) {
 		 for (let i in craterArr) {
 			 craterArr[i].cr();
 		 }
      }
+ } */
+
+ function kill() {
+ 	socket.emit("kill")
  }
