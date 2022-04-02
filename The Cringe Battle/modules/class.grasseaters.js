@@ -32,9 +32,9 @@ module.exports = class GrassEaters extends LivingCreature {
         var emptyCells = this.chooseCell(0);
         var grassCells = this.chooseCell(1);
         var mushCells = this.chooseCell(3);
-        var newCell = Math.floor(Math.random(emptyCells));
-        var newCellG = Math.floor(Math.random(grassCells));
-        var newCellM = Math.floor(Math.random(mushCells));
+        var newCell = emptyCells[Math.floor(Math.random()*emptyCells.length)];
+        var newCellG = mushCells[Math.floor(Math.random()*grassCells.length)];
+        var newCellM = mushCells[Math.floor(Math.random()*mush.length)];
 
         if (newCell && this.multiply >= 120) {
             var newX = newCell[0];
@@ -66,7 +66,7 @@ module.exports = class GrassEaters extends LivingCreature {
         this.multiply++;
     }
     eat() {
-        const newCells = Math.floor(Math.random(this.chooseCell(1)));
+        const newCells = Math.floor(Math.random(this.chooseCell(1))); Math.floor(Math.random()*emptyCells.length);
         const newCellsMush = Math.floor(Math.random(this.chooseCell(3)));
         const bdeath = Math.floor(Math.random(this.chooseCell(27)));
         const cdeath = Math.floor(Math.random(this.chooseCell(29)));

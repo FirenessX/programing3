@@ -1,10 +1,12 @@
 var LivingCreature = require("./class.LIVING_CREATURE");
 
 module.exports = class Grass extends LivingCreature {
-    mul() {        
+    mul() {   
+        this.multiply++;     
         var emptyCells = this.chooseCell(0);
-        var newCell = math.floor(math.random(emptyCells));
+        var newCell = emptyCells[Math.floor(Math.random()*emptyCells.length)];
         if(newCell && this.multiply >= 1){
+            
             var newX = newCell[0];
             var newY = newCell[1];
             matrix[newY][newX] = 1;
@@ -13,6 +15,5 @@ module.exports = class Grass extends LivingCreature {
             grassArr.push(newGrass);
             this.multiply = 0;
         }
-        this.multiply++;
     }
 }

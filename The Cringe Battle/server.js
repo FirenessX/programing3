@@ -8,7 +8,7 @@ app.use(express.static("."));
 app.get('/', function (req, res) {
     res.redirect('index.html');
 });
-server.listen(5000);
+server.listen(8080);
 //! SERVER STUFF END  --  END
 
 weath = "winter";
@@ -42,28 +42,28 @@ var SecAlligatorTale = require("./modules/class.secalligatortale.js");
 
 
 //! Setting global arrays  --  START
-let grassArr= [];
-let grassEatersArr= [];
-let mushroomArr = [];
-let creatorArr = [];
-let nestArr = [];
-let fishsnestArr = [];
-let fishsArr = [];
-let caviarArr = [];
-let predatorArr = [];
-let alligatorArr = [];
-let alBoneArr = [];
-let alBoneBaseArr = [];
-let alligatorBaseArr = [];
-let alligatorTaleArr = [];
-let secAlligatorArr = [];
-let secAlBoneArr = [];
-let secAlBoneBaseArr = [];
-let secAlligatorBaseArr = [];
-let secAlligatorTaleArr = [];
-let bulletArr = [];
-let pistolArr = [];
-let craterArr = [];
+grassArr= [];
+grassEatersArr= [];
+mushroomArr = [];
+creatorArr = [];
+nestArr = [];
+fishsnestArr = [];
+fishsArr = [];
+caviarArr = [];
+predatorArr = [];
+alligatorArr = [];
+alBoneArr = [];
+alBoneBaseArr = [];
+alligatorBaseArr = [];
+alligatorTaleArr = [];
+secAlligatorArr = [];
+secAlBoneArr = [];
+secAlBoneBaseArr = [];
+secAlligatorBaseArr = [];
+secAlligatorTaleArr = [];
+bulletArr = [];
+pistolArr = [];
+craterArr = [];
 //! Setting global arrays  -- END
 
 
@@ -242,7 +242,7 @@ function game() {
 
 
 
-setInterval(game, 1000)
+setInterval(game, 85)
 
 //// Add event
 function kill() {
